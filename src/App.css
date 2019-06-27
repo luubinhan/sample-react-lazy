@@ -18,12 +18,17 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 2rem;
   color: white;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+ol {
+  padding: 0;
+  margin: 0 0 30px;
 }
 
 @keyframes App-logo-spin {
