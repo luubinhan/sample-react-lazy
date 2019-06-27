@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
 import Home from './Home';
-import Topics from './Topics';
-import About from './About';
+// import Topics from './Topics';
+// import About from './About';
 import './App.css';
+
+const AboutLazy = React.lazy(() => import('./About'));
+const TopicsLazy = React.lazy(() => import('./Topics'));
 
 function App() {
   return (
@@ -21,9 +24,11 @@ function App() {
               <Link to="/topics">Topics</Link>
             </li>
           </ol>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} />
+          <React.Suspense fallback={<div>loading....</div>}>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={AboutLazy} />
+            <Route path="/topics" component={TopicsLazy} />
+          </React.Suspense>
         </header>
       </div>
     </Router>
